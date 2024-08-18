@@ -43,14 +43,14 @@ public class BaseTest {
 		
 	}
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void launchApplication() throws FileNotFoundException, IOException  {
 		driver = initializeDriver();
 		landingPage = new LandingPage(driver);
 		landingPage.goTo();
 	}
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void quitApplication() {
 		driver.quit();
 	}

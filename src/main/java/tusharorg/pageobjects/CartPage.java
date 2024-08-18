@@ -28,10 +28,10 @@ public class CartPage extends AbstractComponents {
 		return isProductPresent;
 	}
 	
-	public OrderPage checkoutAllProductsInCart() {
+	public CheckoutPage checkoutAllProductsInCart() {
 		checkoutBtn.click();
 		waitForURLtoContain("https://rahulshettyacademy.com/client/dashboard/order?prop=");
-		return new OrderPage(driver);
+		return new CheckoutPage(driver);
 	}
 
 	

@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import tusharorg.pageobjects.CartPage;
+import tusharorg.pageobjects.OrdersPage;
 
 public class AbstractComponents {
 	
@@ -22,6 +23,7 @@ public class AbstractComponents {
 	}
 	
 	@FindBy(css = "button[routerlink*='cart']") WebElement cartBtn;
+	@FindBy(css = "button[routerlink*='myorders']") WebElement ordersBtn;
 	
 	public void waitForURL(String url) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -53,6 +55,13 @@ public class AbstractComponents {
 		cartBtn.click();
 		waitForURL(cartUrl);
 		return new CartPage(driver);
+	}
+	
+	public OrdersPage gotoOrders() {
+		String ordersUrl = "https://rahulshettyacademy.com/client/dashboard/myorders";
+		ordersBtn.click();
+		waitForURL(ordersUrl);
+		return new OrdersPage(driver);
 	}
 	
 	
