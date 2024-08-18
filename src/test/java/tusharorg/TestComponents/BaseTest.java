@@ -26,7 +26,7 @@ import tusharorg.pageobjects.LandingPage;
 
 public class BaseTest {
 	
-	WebDriver driver;
+	public WebDriver driver;
 	public LandingPage landingPage;
 	
 	public WebDriver initializeDriver() throws FileNotFoundException, IOException {
