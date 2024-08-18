@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import tusharorg.TestComponents.BaseTest;
@@ -19,12 +20,11 @@ public class SubmitOrderTest extends BaseTest {
 	String productName = "ZARA COAT 3";
 	
 	// To verify order placement
-	@Test
-	public void submitOrder() throws FileNotFoundException, IOException, InterruptedException {
+	@Test(dataProvider = "loginData", groups = {"Purchase"})
+	public void submitOrder(String username, String password, String productName) throws FileNotFoundException, IOException, InterruptedException {
 		
-		ProductCatalogue productCatalogue = landingPage.loginApplication("dummytushar@gmail.com", "Tushar123");
+		ProductCatalogue productCatalogue = landingPage.loginApplication(username, password);
 		
-		String productName = "ZARA COAT 3";
 		productCatalogue.addProductToCart(productName);
 		CartPage cartPage = productCatalogue.gotoCart();
 		
@@ -48,6 +48,15 @@ public class SubmitOrderTest extends BaseTest {
 		ProductCatalogue productCatalogue = landingPage.loginApplication("dummytushar@gmail.com", "Tushar123");
 		OrdersPage ordersPage = productCatalogue.gotoOrders();
 		Assert.assertTrue(ordersPage.isProductInOrderedList(productName));
+	}
+	
+	@DataProvider(name = "loginData")
+	public Object[][] getData() {
+		Object[][] data = {
+				{"dummytushar@gmail.com", "Tushar123", "ZARA COAT 3"},
+				{"dummytejas@gmail.com", "Tejas123", "ADIDAS ORIGINAL"}
+		};
+		return data;
 	}
 	
 

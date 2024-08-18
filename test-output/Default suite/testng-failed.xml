@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tusharorg.tests.ErrorValidationsTest">
+      <class name="tusharorg.tests.SubmitOrderTest">
         <methods>
-          <include name="ProductErrorValidation"/>
           <include name="launchApplication"/>
+          <include name="submitOrder"/>
           <include name="quitApplication"/>
         </methods>
-      </class> <!-- tusharorg.tests.ErrorValidationsTest -->
+      </class> <!-- tusharorg.tests.SubmitOrderTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
