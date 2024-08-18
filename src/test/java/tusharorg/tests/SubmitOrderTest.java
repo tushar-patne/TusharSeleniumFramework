@@ -4,6 +4,9 @@ import static org.testng.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -20,15 +23,15 @@ public class SubmitOrderTest extends BaseTest {
 	String productName = "ZARA COAT 3";
 	
 	// To verify order placement
-	@Test(dataProvider = "loginData", groups = {"Purchase"})
-	public void submitOrder(String username, String password, String productName) throws FileNotFoundException, IOException, InterruptedException {
+	@Test(dataProvider = "testData", groups = {"Purchase"})
+	public void submitOrder(HashMap<String, String> data) throws FileNotFoundException, IOException, InterruptedException {
 		
-		ProductCatalogue productCatalogue = landingPage.loginApplication(username, password);
+		ProductCatalogue productCatalogue = landingPage.loginApplication(data.get("username"), data.get("password"));
 		
-		productCatalogue.addProductToCart(productName);
+		productCatalogue.addProductToCart(data.get("productName"));
 		CartPage cartPage = productCatalogue.gotoCart();
 		
-		Boolean isProductPresent = cartPage.verifyProductInCart(productName);
+		Boolean isProductPresent = cartPage.verifyProductInCart(data.get("productName"));
 		Assert.assertTrue(isProductPresent);
 		CheckoutPage checkoutPage = cartPage.checkoutAllProductsInCart();
 		
@@ -50,14 +53,37 @@ public class SubmitOrderTest extends BaseTest {
 		Assert.assertTrue(ordersPage.isProductInOrderedList(productName));
 	}
 	
-	@DataProvider(name = "loginData")
-	public Object[][] getData() {
-		Object[][] data = {
-				{"dummytushar@gmail.com", "Tushar123", "ZARA COAT 3"},
-				{"dummytejas@gmail.com", "Tejas123", "ADIDAS ORIGINAL"}
-		};
-		return data;
-	}
+//	@DataProvider(name = "testData")
+//	public Object[][] getData() {
+//		Object[][] data = {
+//				{"dummytushar@gmail.com", "Tushar123", "ZARA COAT 3"},
+//				{"dummytejas@gmail.com", "Tejas123", "ADIDAS ORIGINAL"}
+//		};
+//		return data;
+//	}
+	
+//	@DataProvider(name = "testData")
+//	public Object[][] getData() {
+//		
+//		HashMap<String, String> map1 = new HashMap<String, String>();
+//		map1.put("username", "dummytushar@gmail.com");
+//		map1.put("password", "Tushar123");
+//		map1.put("productName", "ZARA COAT 3");
+//		
+//		HashMap<String, String> map2 = new HashMap<String, String>();
+//		map2.put("username", "dummytejas@gmail.com");
+//		map2.put("password", "Tejas123");
+//		map2.put("productName", "ADIDAS ORIGINAL");
+//		
+//		return new Object[][] {{map1}, {map2}};
+//		
+//	}
+	
+	@DataProvider(name = "testData")
+	public Object[][] getData() throws IOException {
+		List<HashMap<String, String>> data = getJsonDataToMap();
+		return new Object[][] {{data.get(0)}, {data.get(1)}};
+	} 
 	
 
 }

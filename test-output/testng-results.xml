@@ -1,76 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="3" total="5" passed="2" failed="0" skipped="0">
+<testng-results ignored="1" total="3" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-18T10:47:50 IST" name="Suite" finished-at="2024-08-18T10:48:30 IST" duration-ms="40104">
+  <suite started-at="2024-08-18T13:18:18 IST" name="Default suite" finished-at="2024-08-18T13:19:14 IST" duration-ms="55974">
     <groups>
       <group name="Purchase">
-        <method signature="SubmitOrderTest.submitOrder(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:tusharorg.tests.SubmitOrderTest@18d87d80]" name="submitOrder" class="tusharorg.tests.SubmitOrderTest"/>
+        <method signature="SubmitOrderTest.submitOrder(java.util.HashMap)[pri:0, instance:tusharorg.tests.SubmitOrderTest@5ba3f27a]" name="submitOrder" class="tusharorg.tests.SubmitOrderTest"/>
       </group> <!-- Purchase -->
     </groups>
-    <test started-at="2024-08-18T10:47:50 IST" name="Error Tests" finished-at="2024-08-18T10:47:50 IST" duration-ms="15">
-    </test> <!-- Error Tests -->
-    <test started-at="2024-08-18T10:47:50 IST" name="Submit Orders Tests" finished-at="2024-08-18T10:48:30 IST" duration-ms="40104">
+    <test started-at="2024-08-18T13:18:18 IST" name="Default test" finished-at="2024-08-18T13:19:14 IST" duration-ms="55974">
       <class name="tusharorg.tests.SubmitOrderTest">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:tusharorg.tests.SubmitOrderTest@18d87d80]" started-at="2024-08-18T10:47:50 IST" name="launchApplication" finished-at="2024-08-18T10:47:59 IST" duration-ms="9326" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:tusharorg.tests.SubmitOrderTest@5ba3f27a]" started-at="2024-08-18T13:18:19 IST" name="launchApplication" finished-at="2024-08-18T13:18:38 IST" duration-ms="18624" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="submitOrder(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:tusharorg.tests.SubmitOrderTest@18d87d80]" started-at="2024-08-18T10:47:59 IST" name="submitOrder" data-provider="loginData" finished-at="2024-08-18T10:48:09 IST" duration-ms="9309" status="PASS">
+        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:tusharorg.tests.SubmitOrderTest@5ba3f27a]" started-at="2024-08-18T13:18:38 IST" name="submitOrder" data-provider="testData" finished-at="2024-08-18T13:18:48 IST" duration-ms="10626" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[dummytushar@gmail.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[Tushar123]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[ZARA COAT 3]]>
+                <![CDATA[{password=Tushar123, productName=ZARA COAT 3, username=dummytushar@gmail.com}]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- submitOrder -->
-        <test-method is-config="true" signature="quitApplication()[pri:0, instance:tusharorg.tests.SubmitOrderTest@18d87d80]" started-at="2024-08-18T10:48:09 IST" name="quitApplication" finished-at="2024-08-18T10:48:10 IST" duration-ms="1714" status="PASS">
+        <test-method is-config="true" signature="quitApplication()[pri:0, instance:tusharorg.tests.SubmitOrderTest@5ba3f27a]" started-at="2024-08-18T13:18:48 IST" name="quitApplication" finished-at="2024-08-18T13:18:51 IST" duration-ms="2226" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quitApplication -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:tusharorg.tests.SubmitOrderTest@18d87d80]" started-at="2024-08-18T10:48:10 IST" name="launchApplication" finished-at="2024-08-18T10:48:20 IST" duration-ms="9394" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:tusharorg.tests.SubmitOrderTest@5ba3f27a]" started-at="2024-08-18T13:18:51 IST" name="launchApplication" finished-at="2024-08-18T13:19:04 IST" duration-ms="13305" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="submitOrder(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:tusharorg.tests.SubmitOrderTest@18d87d80]" started-at="2024-08-18T10:48:20 IST" name="submitOrder" data-provider="loginData" finished-at="2024-08-18T10:48:28 IST" duration-ms="8795" status="PASS">
+        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:tusharorg.tests.SubmitOrderTest@5ba3f27a]" started-at="2024-08-18T13:19:04 IST" name="submitOrder" data-provider="testData" finished-at="2024-08-18T13:19:13 IST" duration-ms="8808" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[dummytejas@gmail.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[Tejas123]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[ADIDAS ORIGINAL]]>
+                <![CDATA[{password=Tejas123, productName=ADIDAS ORIGINAL, username=dummytejas@gmail.com}]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- submitOrder -->
-        <test-method is-config="true" signature="quitApplication()[pri:0, instance:tusharorg.tests.SubmitOrderTest@18d87d80]" started-at="2024-08-18T10:48:28 IST" name="quitApplication" finished-at="2024-08-18T10:48:30 IST" duration-ms="1463" status="PASS">
+        <test-method is-config="true" signature="quitApplication()[pri:0, instance:tusharorg.tests.SubmitOrderTest@5ba3f27a]" started-at="2024-08-18T13:19:13 IST" name="quitApplication" finished-at="2024-08-18T13:19:14 IST" duration-ms="1637" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quitApplication -->
       </class> <!-- tusharorg.tests.SubmitOrderTest -->
-    </test> <!-- Submit Orders Tests -->
-  </suite> <!-- Suite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
