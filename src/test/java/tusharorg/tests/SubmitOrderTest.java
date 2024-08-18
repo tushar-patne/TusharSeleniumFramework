@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -86,17 +87,15 @@ public class SubmitOrderTest extends BaseTest {
 	@DataProvider(name = "testData")
 	public Object[][] getData() throws IOException {
 		List<HashMap<String, String>> data = getJsonDataToMap();
-		return new Object[][] {{data.get(0)}, {data.get(1)}};
+		Object[][] testData = new Object[data.size()][1];
+		for (int i = 0; i < testData.length; i++) {
+			testData[i][0] = data.get(i);
+		}
+		return testData;
+//		return new Object[][] {{data.get(0)}, {data.get(1)}};
 	} 
 	
-	public String getScreenshot(String testCaseName) throws IOException {
-		TakesScreenshot ss = (TakesScreenshot) driver;
-		File sourseFile = ss.getScreenshotAs(OutputType.FILE);
-		String targetFilePath = System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
-		File targetFile = new File(targetFilePath);
-		FileUtils.copyFile(sourseFile, targetFile);
-		return targetFilePath;
-	}
+	
 	
 
 }

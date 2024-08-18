@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import tusharorg.TestComponents.BaseTest;
+import tusharorg.TestComponents.Retry;
 import tusharorg.pageobjects.CartPage;
 import tusharorg.pageobjects.OrderConfirmationPage;
 import tusharorg.pageobjects.CheckoutPage;
@@ -15,10 +16,10 @@ import tusharorg.pageobjects.ProductCatalogue;
 
 public class ErrorValidationsTest extends BaseTest {
 
-	@Test(groups = {"ErrorHandling"})
+	@Test(groups = {"ErrorHandling"}, retryAnalyzer = Retry.class)
 	public void LoginErrorValidation() throws FileNotFoundException, IOException, InterruptedException {
 		
-		ProductCatalogue productCatalogue = landingPage.loginApplication("dummytushar@gmail.com", "Tushar1234");
+		ProductCatalogue productCatalogue = landingPage.loginApplication("dummytushar@gmail.com", "Tushar123");
 		Assert.assertEquals(landingPage.getErrorMessage(), "Incorrect email or password.");
 //		Thread.sleep(1500);
 		

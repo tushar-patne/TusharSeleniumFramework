@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -72,6 +74,15 @@ public class BaseTest {
 		List<HashMap<String, String>> data = mapper.readValue(jsonData, new TypeReference<List<HashMap<String,String>>>() {
 		});
 		return data;
+	}
+	
+	public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
+		TakesScreenshot ss = (TakesScreenshot) driver;
+		File sourseFile = ss.getScreenshotAs(OutputType.FILE);
+		String targetFilePath = System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
+		File targetFile = new File(targetFilePath);
+		FileUtils.copyFile(sourseFile, targetFile);
+		return targetFilePath;
 	}
 	
 }
