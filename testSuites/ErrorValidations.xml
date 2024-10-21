@@ -2,11 +2,16 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite parallel="tests" name="Suite">
 	
+	
 	<groups>
 		<run>
 			<include name="ErrorHandling" />
 		</run>
 	</groups>
+	
+	<listeners>
+		<listener class-name="tusharorg.TestComponents.Listeners"/>
+	</listeners>
 	
   <test thread-count="5" name="Submit Orders Tests">
     <classes>

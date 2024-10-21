@@ -11,13 +11,18 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -35,15 +40,40 @@ public class BaseTest {
 		
 		Properties properties = new Properties();
 		properties.load(new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\tusharorg\\resources\\GlobalData.properties"));
-		String browserName = properties.getProperty("browser");
+//		read browser parameter from maven command or else read it from property file
+		String browserName = System.getProperty("browser") != null ? System.getProperty("browser") : properties.getProperty("browser");
+		
+		
 
-		if (browserName.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver();
-		} else if (browserName.equalsIgnoreCase("edge")) {
-			driver = new EdgeDriver();
-		} else if (browserName.equalsIgnoreCase("firefox")) {
-			driver = new FirefoxDriver();
+		if (browserName.contains("chrome")) {
+			ChromeOptions o = new ChromeOptions();
+			o.addArguments("--incognito");
+			if(browserName.contains("headless")) {
+				o.addArguments("--headless");
+//				o.addArguments("window-size=1440,900");
+				o.addArguments("--start-maximized");
+//				.maximize() method might not always work for headless mode
+//				so to avoid the flakiness in the test results it's better to do it using ChromeOptions class which takes precedence over .maximize()
+			}
+			driver = new ChromeDriver(o);
+		} else if (browserName.contains("edge")) {
+			EdgeOptions o = new EdgeOptions();
+			o.addArguments("--incognito");
+			if(browserName.contains("headless")) {
+				o.addArguments("--headless");
+				o.addArguments("--start-maximized");
+			}
+			driver = new EdgeDriver(o);
+		} else if (browserName.contains("firefox")) {
+			FirefoxOptions o = new FirefoxOptions();
+			o.addArguments("--incognito");
+			if(browserName.contains("headless")) {
+				o.addArguments("--headless");
+				o.addArguments("--start-maximized");
+			}
+			driver = new FirefoxDriver(o);
 		} else if (browserName.equalsIgnoreCase("safari")) {
+//			safari driver works only on maxOs and it has many limitations like no support for .addArguments()
 			driver = new SafariDriver();
 		}
 		
@@ -78,10 +108,10 @@ public class BaseTest {
 	
 	public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
 		TakesScreenshot ss = (TakesScreenshot) driver;
-		File sourseFile = ss.getScreenshotAs(OutputType.FILE);
+		File sourceFile = ss.getScreenshotAs(OutputType.FILE);
 		String targetFilePath = System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
 		File targetFile = new File(targetFilePath);
-		FileUtils.copyFile(sourseFile, targetFile);
+		FileUtils.copyFile(sourceFile, targetFile);
 		return targetFilePath;
 	}
 	

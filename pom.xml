@@ -51,7 +51,69 @@
 	    <version>5.1.2</version>
 	</dependency>
 
-
-
   </dependencies>
+
+	<profiles>
+		<!-- regression (testng.xml) profile --> 
+		<profile>
+			<id>Regression</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-plugin</artifactId>
+							<version>3.5.1</version>
+							<configuration>
+								<suiteXmlFiles>
+									<suiteXmlFile>testSuites/testng.xml</suiteXmlFile>
+								</suiteXmlFiles>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		<!-- Purchase profile --> 
+		<profile>
+			<id>Purchase</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-plugin</artifactId>
+							<version>3.5.1</version>
+							<configuration>
+								<suiteXmlFiles>
+									<suiteXmlFile>testSuites/Purchase.xml</suiteXmlFile>
+								</suiteXmlFiles>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		<!-- ErrorValidations profile --> 
+		<profile>
+			<id>ErrorValidations</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-plugin</artifactId>
+							<version>3.5.1</version>
+							<configuration>
+								<suiteXmlFiles>
+									<suiteXmlFile>testSuites/ErrorValidations.xml</suiteXmlFile>
+								</suiteXmlFiles>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
+
 </project>

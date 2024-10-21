@@ -8,6 +8,10 @@
 		</run>
 	</groups>
 	
+	<listeners>
+		<listener class-name="tusharorg.TestComponents.Listeners"/>
+	</listeners>
+	
   <test thread-count="5" name="Submit Orders Tests">
     <classes>
       <class name="tusharorg.tests.SubmitOrderTest"/>
